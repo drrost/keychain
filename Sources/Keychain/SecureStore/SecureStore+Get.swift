@@ -40,7 +40,7 @@ public extension SecureStore {
     private func fetchPassword(_ queryResult: AnyObject?) throws -> String? {
 
         guard
-            let queriedItem = queryResult as? [String: Any],
+            let queriedItem = queryResult as? Query,
             let passwordData = queriedItem[String(kSecValueData)] as? Data,
             let password = String(data: passwordData, encoding: .utf8)
         else {

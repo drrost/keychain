@@ -31,7 +31,7 @@ public extension SecureStore {
 
     private func update(_ data: Data, _ query: Query) throws {
 
-        var attributesToUpdate: [String: Any] = [:]
+        var attributesToUpdate: Query = [:]
         attributesToUpdate[String(kSecValueData)] = data
         let status = SecItemUpdate(query as CFDictionary,
                                    attributesToUpdate as CFDictionary)

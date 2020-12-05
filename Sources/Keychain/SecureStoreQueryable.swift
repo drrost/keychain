@@ -24,8 +24,8 @@ public struct GenericPasswordQueryable {
 }
 
 extension GenericPasswordQueryable: SecureStoreQueryable {
-  public var query: [String: Any] {
-    var query: [String: Any] = [:]
+  public var query: Query {
+    var query: Query = [:]
     query[String(kSecClass)] = kSecClassGenericPassword
     query[String(kSecAttrService)] = service
     // Access group if target environment is not simulator
@@ -48,8 +48,8 @@ public struct InternetPasswordQueryable {
 }
 
 extension InternetPasswordQueryable: SecureStoreQueryable {
-  public var query: [String: Any] {
-    var query: [String: Any] = [:]
+  public var query: Query {
+    var query: Query = [:]
     query[String(kSecClass)] = kSecClassInternetPassword
     query[String(kSecAttrPort)] = port
     query[String(kSecAttrServer)] = server
