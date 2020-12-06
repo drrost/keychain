@@ -29,9 +29,12 @@ public struct SecureStore {
     public func removeAllValues() throws {
         let query = secureStoreQueryable.query
 
-        let status = SecItemDelete(query as CFDictionary)
-        guard status == errSecSuccess || status == errSecItemNotFound else {
-            throw error(from: status)
+        var status = errSecSuccess
+        while status == errSecSuccess {
+            status = SecItemDelete(query as CFDictionary)
+            guard status == errSecSuccess || status == errSecItemNotFound else {
+                throw error(from: status)
+            }
         }
     }
 
